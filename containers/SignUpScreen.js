@@ -62,7 +62,10 @@ export default function SignUpScreen({ setToken }) {
         setErrorMessage("Un ou plusieurs de vos champs sont vides");
       }
     } catch (error) {
-      alert("Inscription échouée \n" + error.message);
+      // alert("Inscription échouée \n" + error.response.data.error);
+      if (error.response.data) {
+        setErrorMessage(error.response.data.error);
+      }
     }
     setIsLoading(false);
   };

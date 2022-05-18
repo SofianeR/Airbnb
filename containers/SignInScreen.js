@@ -46,7 +46,8 @@ export default function SignInScreen({ setToken }) {
 
         // navigation.navigate("Home");
       } catch (error) {
-        alert("Connexion échouée \n" + error.message);
+        // alert("Connexion échouée \n" + error.message);
+        setErrorMessage(error.response.data.error);
       }
     } else {
       setErrorMessage("One of the fields is empty");
