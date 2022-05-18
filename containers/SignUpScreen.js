@@ -68,7 +68,11 @@ export default function SignUpScreen({ setToken }) {
   };
 
   return (
-    <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
+    <KeyboardAwareScrollView
+      contentContainerStyle={{ flex: 1 }}
+      enableOnAndroid={true}
+      extraHeight={130}
+      extraScrollHeight={130}>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image
@@ -197,11 +201,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   inputSignup: {
-    borderTopColor: "white",
-    borderRightColor: "white",
-    borderLeftColor: "white",
     borderBottomColor: "#EB5A62",
-    borderWidth: 1,
+    borderBottomWidth: 1,
     marginTop: 20,
     padding: 5,
   },
