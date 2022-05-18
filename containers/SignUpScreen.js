@@ -68,11 +68,7 @@ export default function SignUpScreen({ setToken }) {
   };
 
   return (
-    <KeyboardAwareScrollView
-      contentContainerStyle={{ flex: 1 }}
-      enableOnAndroid={true}
-      extraHeight={130}
-      extraScrollHeight={130}>
+    <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
         <View style={styles.header}>
           <Image
@@ -158,9 +154,7 @@ export default function SignUpScreen({ setToken }) {
           <View style={styles.submit}>
             <TouchableOpacity
               disabled={isLoading ? true : false}
-              onPress={async () => {
-                fetchData();
-              }}>
+              onPress={fetchData}>
               <Text style={styles.buttonSignup}>Sign up</Text>
             </TouchableOpacity>
 

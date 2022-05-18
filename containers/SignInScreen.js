@@ -101,9 +101,7 @@ export default function SignInScreen({ setToken }) {
         <View style={styles.submit}>
           <TouchableOpacity
             disabled={isLoading ? true : false}
-            onPress={async () => {
-              SignIn();
-            }}>
+            onPress={SignIn}>
             <Text style={styles.buttonSignup}>Sign in</Text>
           </TouchableOpacity>
 
