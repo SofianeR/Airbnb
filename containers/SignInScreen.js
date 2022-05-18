@@ -170,11 +170,8 @@ const styles = StyleSheet.create({
   },
   password: {
     width: "90%",
-    borderTopColor: "white",
-    borderRightColor: "white",
-    borderLeftColor: "white",
     borderBottomColor: "#EB5A62",
-    borderWidth: 1,
+    borderBottomWidth: 1,
     marginTop: 20,
     padding: 5,
   },
