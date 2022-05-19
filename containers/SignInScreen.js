@@ -13,6 +13,7 @@ import {
 } from "react-native";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { Entypo } from "@expo/vector-icons";
 
@@ -41,6 +42,7 @@ export default function SignInScreen({ setToken }) {
         const user = response.data;
 
         setToken(user.token);
+        await AsyncStorage.setItem("token", user.token);
 
         alert(`Bienvenue ${user.username}`);
 

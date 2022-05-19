@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Image, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -10,6 +11,8 @@ import SignInScreen from "./containers/SignInScreen";
 import SignUpScreen from "./containers/SignUpScreen";
 import SettingsScreen from "./containers/SettingsScreen";
 import SplashScreen from "./containers/SplashScreen";
+import Room from "./containers/RoomScreen";
+import AroundMeScreen from "./containers/AroundMeScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -71,8 +74,7 @@ export default function App() {
                   headerShown: false,
                   tabBarActiveTintColor: "tomato",
                   tabBarInactiveTintColor: "gray",
-                }}
-              >
+                }}>
                 <Tab.Screen
                   name="TabHome"
                   options={{
@@ -80,27 +82,77 @@ export default function App() {
                     tabBarIcon: ({ color, size }) => (
                       <Ionicons name={"ios-home"} size={size} color={color} />
                     ),
-                  }}
-                >
+                  }}>
                   {() => (
                     <Stack.Navigator>
                       <Stack.Screen
                         name="Home"
                         options={{
                           title: "My App",
-                          headerStyle: { backgroundColor: "red" },
+                          // headerStyle: { backgroundColor: "red" },
                           headerTitleStyle: { color: "white" },
-                        }}
-                      >
+                          headerTitle: () => (
+                            <View
+                              style={{
+                                width: "95%",
+                                alignItems: "center",
+                                padding: 10,
+                              }}>
+                              <Image
+                                style={{ width: 40, height: 40 }}
+                                source={require("./assets/logo_airbnb.png")}
+                              />
+                            </View>
+                          ),
+                        }}>
                         {() => <HomeScreen />}
+                      </Stack.Screen>
+
+                      <Stack.Screen
+                        name="Room"
+                        options={{
+                          headerTitle: () => (
+                            <View
+                              style={{
+                                width: "75%",
+                                alignItems: "center",
+                                padding: 10,
+                              }}>
+                              <Image
+                                style={{ width: 40, height: 40 }}
+                                source={require("./assets/logo_airbnb.png")}
+                              />
+                            </View>
+                          ),
+                        }}>
+                        {() => <Room />}
+                      </Stack.Screen>
+
+                      <Stack.Screen
+                        name="AroundMe"
+                        options={{
+                          headerTitle: () => (
+                            <View
+                              style={{
+                                width: "75%",
+                                alignItems: "center",
+                                padding: 10,
+                              }}>
+                              <Image
+                                style={{ width: 40, height: 40 }}
+                                source={require("./assets/logo_airbnb.png")}
+                              />
+                            </View>
+                          ),
+                        }}>
+                        {() => <AroundMeScreen />}
                       </Stack.Screen>
 
                       <Stack.Screen
                         name="Profile"
                         options={{
                           title: "User Profile",
-                        }}
-                      >
+                        }}>
                         {() => <ProfileScreen />}
                       </Stack.Screen>
                     </Stack.Navigator>
@@ -117,16 +169,14 @@ export default function App() {
                         color={color}
                       />
                     ),
-                  }}
-                >
+                  }}>
                   {() => (
                     <Stack.Navigator>
                       <Stack.Screen
                         name="Settings"
                         options={{
                           title: "Settings",
-                        }}
-                      >
+                        }}>
                         {() => <SettingsScreen setToken={setToken} />}
                       </Stack.Screen>
                     </Stack.Navigator>

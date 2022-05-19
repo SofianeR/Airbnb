@@ -11,6 +11,7 @@ import {
 } from "react-native";
 
 import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
@@ -47,10 +48,11 @@ export default function SignUpScreen({ setToken }) {
               password: password,
             }
           );
-          console.log(response.data);
 
-          const userToken = response.data.token;
-          setToken(userToken);
+          const user = response.data;
+          setToken(user.token);
+
+          await AsyncStorage.setItem("token", user.token);
 
           alert("Inscription reussi");
 
